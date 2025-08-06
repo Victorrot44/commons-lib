@@ -90,7 +90,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#SERVICE}
      */
     public static ServiceException service(String message) {
-        return logAndReturn(new ServiceException(TypeException.VALIDATION, message));
+        return logAndReturn(new ServiceException(TypeException.SERVICE, message));
     }
     
     /**
@@ -100,7 +100,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#SERVICE}
      */
     public static ServiceException service(Throwable cause) {
-        return logAndReturn(new ServiceException(TypeException.VALIDATION, cause));
+        return logAndReturn(new ServiceException(TypeException.SERVICE, cause));
     }
     
     /**
@@ -135,7 +135,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#DATABASE}
      */
     public static ServiceException database(String message) {
-        return logAndReturn(new ServiceException(TypeException.VALIDATION, message));
+        return logAndReturn(new ServiceException(TypeException.DATABASE, message));
     }
     
     /**
@@ -145,7 +145,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#DATABASE}
      */
     public static ServiceException database(Throwable cause) {
-        return logAndReturn(new ServiceException(TypeException.VALIDATION, cause));
+        return logAndReturn(new ServiceException(TypeException.DATABASE, cause));
     }
     
     /**
@@ -181,7 +181,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#CONFIG}
      */
     public static ServiceException config(String message) {
-        return logAndReturn(new ServiceException(TypeException.VALIDATION, message));
+        return logAndReturn(new ServiceException(TypeException.CONFIG, message));
     }
     
     /**
@@ -191,7 +191,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#CONFIG}
      */
     public static ServiceException config(Throwable cause) {
-        return logAndReturn(new ServiceException(TypeException.VALIDATION, cause));
+        return logAndReturn(new ServiceException(TypeException.CONFIG, cause));
     }
     
     /**
@@ -226,7 +226,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#GENERAL}
      */
     public static ServiceException general(String message) {
-        return logAndReturn(new ServiceException(TypeException.VALIDATION, message));
+        return logAndReturn(new ServiceException(TypeException.GENERAL, message));
     }
     
     /**
@@ -236,7 +236,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#GENERAL}
      */
     public static ServiceException general(Throwable cause) {
-        return logAndReturn(new ServiceException(TypeException.VALIDATION, cause));
+        return logAndReturn(new ServiceException(TypeException.GENERAL, cause));
     }
     
     /**
