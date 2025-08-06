@@ -35,6 +35,22 @@ public final class ServiceExceptionFactory {
         log.error("Cause: {}", Objects.isNull(ex.getCause()) ? "N/A" : ex.getCause().toString());
         return ex;
     }
+
+    private static ServiceException create(TypeException type, String message) {
+        return logAndReturn(new ServiceException(type, message));
+    }
+
+    private static ServiceException create(TypeException type, Throwable cause) {
+        return logAndReturn(new ServiceException(type, cause));
+    }
+
+    private static ServiceException create(TypeException type, String message, Object... params) {
+        return logAndReturn(new ServiceException(type, message, params));
+    }
+
+    private static ServiceException create(TypeException type, Throwable cause, String message, Object... params) {
+         return logAndReturn(new ServiceException(type, cause, message, params));
+    }
     
     // ========== VALIDATION EXCEPTIONS ==========
     
@@ -45,7 +61,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#VALIDATION}
      */
     public static ServiceException validation(String message) {
-        return logAndReturn(new ServiceException(TypeException.VALIDATION, message));
+        return create(TypeException.VALIDATION, message);
     }
     
     /**
@@ -55,7 +71,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#VALIDATION}
      */
     public static ServiceException validation(Throwable cause) {
-        return logAndReturn(new ServiceException(TypeException.VALIDATION, cause));
+        return create(TypeException.VALIDATION, cause);
     }
     
     /**
@@ -66,7 +82,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#VALIDATION}
      */
     public static ServiceException validation(String message, Object... params) {
-        return logAndReturn(new ServiceException(TypeException.VALIDATION, message, params));
+        return create(TypeException.VALIDATION, message, params);
     }
 
     /**
@@ -78,7 +94,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#VALIDATION}
      */
     public static ServiceException validation(Throwable cause, String message, Object... params) {
-        return logAndReturn(new ServiceException(TypeException.VALIDATION, cause, message, params));
+        return create(TypeException.VALIDATION, cause, message, params);
     }
 
     // ========== SERVICE EXCEPTIONS ==========
@@ -90,7 +106,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#SERVICE}
      */
     public static ServiceException service(String message) {
-        return logAndReturn(new ServiceException(TypeException.SERVICE, message));
+        return create(TypeException.SERVICE, message);
     }
     
     /**
@@ -100,7 +116,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#SERVICE}
      */
     public static ServiceException service(Throwable cause) {
-        return logAndReturn(new ServiceException(TypeException.SERVICE, cause));
+        return create(TypeException.SERVICE, cause);
     }
     
     /**
@@ -111,7 +127,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#SERVICE}
      */
     public static ServiceException service(String message, Object... params) {
-        return logAndReturn(new ServiceException(TypeException.SERVICE, message, params));
+        return create(TypeException.SERVICE, message, params);
     }
 
     /**
@@ -123,7 +139,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#SERVICE}
      */
     public static ServiceException service(Throwable cause, String message, Object... params) {
-        return logAndReturn(new ServiceException(TypeException.SERVICE, cause, message, params));
+        return create(TypeException.SERVICE, cause, message, params);
     }
 
     // ========== DATABASE EXCEPTIONS ==========
@@ -135,7 +151,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#DATABASE}
      */
     public static ServiceException database(String message) {
-        return logAndReturn(new ServiceException(TypeException.DATABASE, message));
+        return create(TypeException.DATABASE, message);
     }
     
     /**
@@ -145,7 +161,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#DATABASE}
      */
     public static ServiceException database(Throwable cause) {
-        return logAndReturn(new ServiceException(TypeException.DATABASE, cause));
+        return create(TypeException.DATABASE, cause);
     }
     
     /**
@@ -157,7 +173,7 @@ public final class ServiceExceptionFactory {
      */
 
     public static ServiceException database(String message, Object... params) {
-        return logAndReturn(new ServiceException(TypeException.DATABASE, message, params));
+        return create(TypeException.DATABASE, message, params);
     }
 
     /**
@@ -169,7 +185,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#DATABASE}
      */
     public static ServiceException database(Throwable cause, String message, Object... params) {
-        return logAndReturn(new ServiceException(TypeException.DATABASE, cause, message, params));
+        return create(TypeException.DATABASE, cause, message, params);
     }
 
     // ========== CONFIGURATION EXCEPTIONS ==========
@@ -181,7 +197,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#CONFIG}
      */
     public static ServiceException config(String message) {
-        return logAndReturn(new ServiceException(TypeException.CONFIG, message));
+        return create(TypeException.CONFIG, message);
     }
     
     /**
@@ -191,7 +207,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#CONFIG}
      */
     public static ServiceException config(Throwable cause) {
-        return logAndReturn(new ServiceException(TypeException.CONFIG, cause));
+        return create(TypeException.CONFIG, cause);
     }
     
     /**
@@ -202,7 +218,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#CONFIG}
      */
     public static ServiceException config(String message, Object... params) {
-        return logAndReturn(new ServiceException(TypeException.CONFIG, message, params));
+        return create(TypeException.CONFIG, message, params);
     }
 
     /**
@@ -214,7 +230,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#CONFIG}
      */
     public static ServiceException config(Throwable cause, String message, Object... params) {
-        return logAndReturn(new ServiceException(TypeException.CONFIG, cause, message, params));
+        return create(TypeException.CONFIG, cause, message, params);
     }
     
     // ========== GENERAL EXCEPTIONS ==========
@@ -226,7 +242,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#GENERAL}
      */
     public static ServiceException general(String message) {
-        return logAndReturn(new ServiceException(TypeException.GENERAL, message));
+        return create(TypeException.GENERAL, message);
     }
     
     /**
@@ -236,7 +252,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#GENERAL}
      */
     public static ServiceException general(Throwable cause) {
-        return logAndReturn(new ServiceException(TypeException.GENERAL, cause));
+        return create(TypeException.GENERAL, cause);
     }
     
     /**
@@ -247,7 +263,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#GENERAL}
      */
     public static ServiceException general(String message, Object... params) {
-        return logAndReturn(new ServiceException(TypeException.GENERAL, message, params));
+        return create(TypeException.GENERAL, message, params);
     }
 
     /**
@@ -259,7 +275,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} de tipo {@link TypeException#GENERAL}
      */
     public static ServiceException general(Throwable cause, String message, Object... params) {
-        return logAndReturn(new ServiceException(TypeException.GENERAL, cause, message, params));
+        return create(TypeException.GENERAL, cause, message, params);
     }
 
     // ========== MÉTODOS DE CONVENIENCIA ==========
@@ -272,7 +288,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} del tipo especificado
      */
     public static ServiceException of(TypeException type, String message) {
-        return logAndReturn(new ServiceException(type, message));
+        return create(type, message);
     }
     
     /**
@@ -283,7 +299,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} del tipo especificado
      */
     public static ServiceException of(TypeException type, Throwable cause) {
-        return logAndReturn(new ServiceException(type, cause));
+        return create(type, cause);
     }
     
     /**
@@ -295,7 +311,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} del tipo especificado
      */
     public static ServiceException of(TypeException type, String message, Object... params) {
-        return logAndReturn(new ServiceException(type, message, params));
+        return create(type, message, params);
     }
 
     /**
@@ -308,7 +324,7 @@ public final class ServiceExceptionFactory {
      * @return instancia de {@link ServiceException} del tipo especificado
      */
     public static ServiceException of(TypeException type, Throwable cause, String message, Object... params) {
-        return logAndReturn(new ServiceException(type, cause, message, params));
+        return create(type, cause, message, params);
     }
     
 }
